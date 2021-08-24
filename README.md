@@ -1,4 +1,4 @@
-# UltraOS 代码更新与仓库 https://gitlab.eduxiji.net/ultrateam/ultraos
+# UltraOS 代码更新与仓库 https://gitee.com/LoanCold/ultraos_backup
 
 拥有友好代码和详细文档的Rust编写的基于RISC-V64的多核操作系统UltraOS，支持qemu和k210平台运行。
 
