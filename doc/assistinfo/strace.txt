@@ -1,0 +1,2592 @@
+cd codes/user && make elf
+make[1]: 进入目录“/home/ghc/桌面/os_comp/rv64_os/ultraos/codes/user”
+rustup target add riscv64imac-unknown-none-elf
+make[1]: 离开目录“/home/ghc/桌面/os_comp/rv64_os/ultraos/codes/user”
+cd codes/os && make fat32
+make[1]: 进入目录“/home/ghc/桌面/os_comp/rv64_os/ultraos/codes/os”
+./buildfs.sh
+mkfs.fat 4.1 (2017-01-24)
+make[1]: 离开目录“/home/ghc/桌面/os_comp/rv64_os/ultraos/codes/os”
+cd codes/os && make run
+make[1]: 进入目录“/home/ghc/桌面/os_comp/rv64_os/ultraos/codes/os”
+Platform: k210
+(which ../tools/kflash.py) || (cd .. && git clone https://github.com/sipeed/kflash.py.git && mv kflash.py tools)
+../tools/kflash.py
+python3 ../tools/kflash.py -p /dev/ttyUSB0 -b 1500000 target/riscv64imac-unknown-none-elf/release/os.bin
+[32m[1m[INFO][0m COM Port Selected Manually:  /dev/ttyUSB0 [0m
+[32m[1m[INFO][0m Default baudrate is 115200 , later it may be changed to the value you set. [0m
+[32m[1m[INFO][0m Trying to Enter the ISP Mode... [0m
+.
+[32m[1m[INFO][0m Automatically detected dan/bit/trainer [0m
+
+[32m[1m[INFO][0m Greeting Message Detected, Start Downloading ISP [0m
+Downloading ISP: |====---------------------------------------------------------------------------------------------------------------------| 3.3% Downloading ISP: |========-----------------------------------------------------------------------------------------------------------------| 6.7% Downloading ISP: |============-------------------------------------------------------------------------------------------------------------| 10.0% Downloading ISP: |================---------------------------------------------------------------------------------------------------------| 13.3% Downloading ISP: |====================-----------------------------------------------------------------------------------------------------| 16.7% Downloading ISP: |========================-------------------------------------------------------------------------------------------------| 20.0% Downloading ISP: |============================---------------------------------------------------------------------------------------------| 23.3% Downloading ISP: |================================-----------------------------------------------------------------------------------------| 26.7% Downloading ISP: |====================================-------------------------------------------------------------------------------------| 30.0% Downloading ISP: |========================================---------------------------------------------------------------------------------| 33.3% Downloading ISP: |============================================-----------------------------------------------------------------------------| 36.7% 10kiB/sDownloading ISP: |================================================-------------------------------------------------------------------------| 40.0% 10kiB/sDownloading ISP: |====================================================---------------------------------------------------------------------| 43.3% 10kiB/sDownloading ISP: |========================================================-----------------------------------------------------------------| 46.7% 10kiB/sDownloading ISP: |============================================================-------------------------------------------------------------| 50.0% 10kiB/sDownloading ISP: |================================================================---------------------------------------------------------| 53.3% 10kiB/sDownloading ISP: |====================================================================-----------------------------------------------------| 56.7% 10kiB/sDownloading ISP: |========================================================================-------------------------------------------------| 60.0% 10kiB/sDownloading ISP: |============================================================================---------------------------------------------| 63.3% 10kiB/sDownloading ISP: |================================================================================-----------------------------------------| 66.7% 10kiB/sDownloading ISP: |====================================================================================-------------------------------------| 70.0% 10kiB/sDownloading ISP: |========================================================================================---------------------------------| 73.3% 10kiB/sDownloading ISP: |============================================================================================-----------------------------| 76.7% 10kiB/sDownloading ISP: |================================================================================================-------------------------| 80.0% 10kiB/sDownloading ISP: |====================================================================================================---------------------| 83.3% 10kiB/sDownloading ISP: |========================================================================================================-----------------| 86.7% 10kiB/sDownloading ISP: |============================================================================================================-------------| 90.0% 10kiB/sDownloading ISP: |================================================================================================================---------| 93.3% 10kiB/sDownloading ISP: |====================================================================================================================-----| 96.7% 10kiB/sDownloading ISP: |=========================================================================================================================| 100.0% 10kiB/s
+[32m[1m[INFO][0m Booting From 0x80000000 [0m
+[32m[1m[INFO][0m Wait For 0.1 second for ISP to Boot [0m
+[32m[1m[INFO][0m Boot to Flashmode Successfully [0m
+[32m[1m[INFO][0m Selected Baudrate:  1500000 [0m
+[32m[1m[INFO][0m Baudrate changed, greeting with ISP again ...  [0m
+[32m[1m[INFO][0m Boot to Flashmode Successfully [0m
+[32m[1m[INFO][0m Selected Flash:  On-Board [0m
+[32m[1m[INFO][0m Initialization flash Successfully [0m
+Programming BIN: |=============------------------------------------------------------------------------------------------------------------| 10.9% 61kiB/sProgramming BIN: |==========================-----------------------------------------------------------------------------------------------| 21.8% 62kiB/sProgramming BIN: |=======================================----------------------------------------------------------------------------------| 32.7% 62kiB/sProgramming BIN: |====================================================---------------------------------------------------------------------| 43.5% 62kiB/sProgramming BIN: |=================================================================--------------------------------------------------------| 54.4% 61kiB/sProgramming BIN: |===============================================================================------------------------------------------| 65.3% 61kiB/sProgramming BIN: |============================================================================================-----------------------------| 76.2% 61kiB/sProgramming BIN: |=========================================================================================================----------------| 87.1% 61kiB/sProgramming BIN: |======================================================================================================================---| 98.0% 61kiB/sProgramming BIN: |=========================================================================================================================| 100.0% 60kiB/s
+[32m[1m[INFO][0m Rebooting... [0m
+python3 -m serial.tools.miniterm --eol LF --dtr 0 --rts 0 --filter direct /dev/ttyUSB0 115200
+`|   (�[rustsbi] RustSBI version 0.2.0-alpha.2
+.______       __    __      _______.___________.  _______..______   __
+|   _  \     |  |  |  |    /       |           | /       ||   _  \ |  |
+|  |_)  |    |  |  |  |   |   (----`---|  |----`|   (----`|  |_)  ||  |
+|      /     |  |  |  |    \   \       |  |      \   \    |   _  < |  |
+|  |\  \----.|  `--'  |.----)   |      |  |  .----)   |   |  |_)  ||  |
+| _| `._____| \______/ |_______/       |__|  |_______/    |______/ |__|
+
+[rustsbi] Platform: K210 (Version 0.2.0)
+[rustsbi] misa: RV64ACDFIMSU
+[rustsbi] mideleg: 0x22
+[rustsbi] medeleg: 0x1ab
+[rustsbi] Kernel entry: 0x80020000
+last 1628 Physical Frames.
+.text [0x80020000, 0x8005c000)
+.rodata [0x8005c000, 0x80065000)
+.data [0x80065000, 0x80093000)
+.bss [0x80093000, 0x801a4000)
+mapping .text section
+mapping .rodata section
+mapping .data section
+mapping .bss section
+mapping physical memory
+mapping memory-mapped registers
+remap_test passed!
+[fs] build rootfs ... start
+[fs] build rootfs: creating /proc
+init sdcard!
+[fs] Load FAT32
+[fs] build rootfs: init /proc
+[fs] build rootfs ... finish
+Already have init proc in FS
+Already have init proc in FS
+Write apps(initproc & user_shell) to disk from mem
+Recycle memory: 80066000-80092000
+syscall-(220) arg0 = 17, arg1 = 0
+sys_fork(flags: SIGCHLD, stack_ptr: 0x0, ptid: 0, ctid: 57352, newtls: 32768) = 1
+syscall-(221) arg0 = 16488, arg1 = 16512
+kmap(0x0,112208,0,0,3,0)
+sys_exec(path: user_shell, args: []) = 0
+syscall-(260) arg0 = -1, arg1 = 2147471036
+syscall-(64) arg0 = 1, arg1 = 31960
+Delete init programs initproc and user_shell in FS
+syscall-(64) arg0 = 1, arg1 = 30425
+!!!!!!!!!AUTORUN!!!!!!!!!
+syscall-(34) arg0 = -100, arg1 = 65536
+syscall-(34) arg0 = -100, arg1 = 65552
+syscall-(56) arg0 = -100, arg1 = 65568
+sys_openat: path = /var/tmp/lmbench
+syscall-(34) arg0 = -100, arg1 = 65536
+syscall-(64) arg0 = 1, arg1 = 30520
+latency measurements
+syscall-(64) arg0 = 1, arg1 = 31657
+scan str iter
+syscall-(220) arg0 = 17, arg1 = 0
+sys_fork(flags: SIGCHLD, stack_ptr: 0x0, ptid: 0, ctid: 8, newtls: 65920) = 2
+syscall-(221) arg0 = 65632, arg1 = 65984
+kmap(0x0,1093488,0,0,4,0)
+sys_exec(path: lmbench_all, args: ["lmbench_all", "lat_syscall", "-P", "1", "null"]) = 5
+syscall-(260) arg0 = 2, arg1 = 2147470128
+syscall-(214) arg0 = 0, arg1 = 2147470120
+sys_brk(0x0) = 0x110000
+syscall-(214) arg0 = 1116716, arg1 = 2147470120
+sys_brk(0x110A2C) = 0x110A2C
+syscall-(160) arg0 = 2147469864, arg1 = 4
+syscall-(78) arg0 = -100, arg1 = 968328
+sys_readlinkat(dirfd = -100, pathname = /proc/self/exe, *buf = 0x7FFFBB00, bufsiz = 4096) = 12
+syscall-(214) arg0 = 1251884, arg1 = 1021136
+sys_brk(0x131A2C) = 0x131A2C
+syscall-(214) arg0 = 1253376, arg1 = 1021136
+sys_brk(0x132000) = 0x132000
+syscall-(226) arg0 = 1003520, arg1 = 12288
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 75259782) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 85963815) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 105016905) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 115828956) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 134988687) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 145800279) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 164960316) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 175772061) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 194932251) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 205743843) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 224903880) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 235715472) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 254875509) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 265687254) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 284847291) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 295658883) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 314818920) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 325630818) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 344790702) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 355602294) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 374762484) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 385574229) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 404734113) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 415546011) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 434705895) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 445517334) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 464677677) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 475489422) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 494649306) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 505461051) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 524621088) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 535432833) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 554592870) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 565404768) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 584564652) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 595375938) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 614536434) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 625347873) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 644508063) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 655319808) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 674479845) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 685291437) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 704451321) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 715262913) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 734422950) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 745234542) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 764394885) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 775206630) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 794366514) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 805178259) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 824338296) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 835150041) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 854309925) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 865121670) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 884281707) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 895093146) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 914253336) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 925064928) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 944224965) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 955036557) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 974197053) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 20, nsec: 985008492) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 9668529) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 20266074) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 39319164) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 50023809) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 69076899) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 79781544) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 98834328) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 109539126) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 128699010) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 139511061) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 158670792) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 169482690) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 188642574) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 199454319) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 218614356) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 229425948) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 248586138) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 259397730) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 278557767) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 289369359) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 308529549) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 319341447) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 338501178) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 349313076) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 368472807) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 379284552) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 398444436) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 409256487) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 428416218) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 439227810) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 458387847) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 469199898) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 488359782) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 499171680) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 518331411) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 529143156) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 548303193) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 559114785) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 578274822) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 589086567) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 608246451) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 619058349) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 638218386) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 649030131) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 668190168) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 679001760) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 698161797) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 708973542) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 728133579) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 738945171) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 758105208) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 768916953) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 788076990) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 798888582) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 818048619) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 828860364) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 848020860) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 858832299) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 877992183) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 888803775) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 907964271) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 918775557) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 937935594) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 948747033) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 967907376) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 21, nsec: 978719274) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 3379005) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 13976550) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 33029487) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 43734591) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 62787069) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 73491867) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 92544804) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 103249755) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 122409639) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 133221078) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 152381574) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 163193166) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 182352897) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 193164795) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 212324526) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 223136271) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 242296614) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 253108053) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 272268243) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 283079682) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 302240025) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 313051311) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 332211348) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 343023858) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 362183436) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 372995028) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 392155065) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 402966963) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 422126541) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 432938592) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 452098323) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 462910374) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 482070564) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 492882003) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 512041734) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 522853785) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 542013669) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 552825414) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 571985298) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 582796890) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 601957233) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 612768825) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 631929015) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 642740913) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 661900338) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 672712542) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 691872120) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 702684018) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 721843902) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 732655800) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 751815531) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 762627735) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 781787313) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 792599364) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 811759248) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 822570840) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 841731030) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 852542622) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 871702353) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 882514404) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 901674441) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 912485880) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 931646070) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 942457662) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 961617699) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 972429444) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 22, nsec: 991589328) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 7901379) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 26847063) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 37551861) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 56604951) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 67309290) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 86362533) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 97067025) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 116119962) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 126931707) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 146091744) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 156903336) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 176063526) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 186875424) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 206035002) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 216846900) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 236006937) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 246818529) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 265978719) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 276790311) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 295950195) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 306762093) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 325922130) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 336733875) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 355893912) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 366705198) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 385865541) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 396676980) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 415837323) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 426649068) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 445809105) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 456620697) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 475780734) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 486592479) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 505752516) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 516564108) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 535723992) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 546536043) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 565695774) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 576507672) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 595667403) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 606479301) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 625639491) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 636450777) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 655610967) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 666422712) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 685582749) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 696394494) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 715554378) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 726365970) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 745526007) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 756338058) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 775497942) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 786309687) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 805469724) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 816281469) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 835441659) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 846253098) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 865413135) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 876224574) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 895384611) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 906196356) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 925356546) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 936168138) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 955328175) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 966139920) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 23, nsec: 985300110) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 1611549) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 20557539) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 31262031) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 50315121) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 61019766) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 80072856) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 90777501) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 109830438) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 120642030) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 139802220) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 150614271) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 169773849) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 180586206) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 199745784) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 210557376) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 229717260) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 240529311) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 259689195) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 270500787) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 289660824) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 300472263) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 319632606) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 330444045) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 349604388) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 360416286) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 379576017) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 390387762) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 409547952) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 420359238) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 439519428) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 450330867) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 469491210) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 480302955) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 499462686) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 510274584) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 529434468) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 540246366) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 559406403) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 570217842) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 589378032) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 600189777) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 619349508) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 630161406) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 649321443) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 660133341) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 679293378) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 690104817) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 709265160) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 720076446) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 739236636) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 750048381) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 769208265) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 780020163) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 799180200) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 809991639) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 829151829) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 839963727) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 859123458) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 869935509) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 889095393) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 899907138) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 919066716) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 929878614) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 949038498) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 959850243) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 979010280) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 24, nsec: 989822025) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 14482062) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 25186860) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 44239950) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 54944595) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 73997226) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 84702024) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 103755114) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 114566553) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 133726743) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 144538335) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 163698219) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 174510423) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 193670154) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 204481593) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 223641936) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 234453375) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 253613412) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 264425463) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 283585500) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 294397398) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 313556976) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 324369027) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 343528758) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 354340503) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 373500387) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 384312285) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 403472322) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 414283914) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 433443798) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 444255543) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 463415733) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 474227325) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 493387362) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 504199260) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 523358991) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 534170736) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 553330926) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 564142977) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 583302402) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 594114147) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 613274184) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 624085776) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 643245966) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 654057864) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 673217595) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 684029034) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 703189530) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 714001122) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 733161312) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 743972904) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 763132941) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 773944533) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 793104723) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 803916315) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 823076199) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 833887944) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 853047981) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 863859573) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 883019763) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 893831661) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 912991545) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 923803137) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 942963174) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 953774919) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 972934803) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 25, nsec: 983747007) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 8406432) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 19004283) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 38057220) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 48761712) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 67814802) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 78519600) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 97572690) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 108277029) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 127437066) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 138248811) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 157409001) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 168220593) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 187380630) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 198192222) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 217352259) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 228164157) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 247324041) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 258135633) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 277295976) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 288107721) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 307267605) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 318079197) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 337239234) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 348050826) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 367211016) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 378022761) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 397182798) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 407994237) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 427154427) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 437966325) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 457126209) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 467937648) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 487097685) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 497909736) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 517069620) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 527881365) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 547041402) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 557853147) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 577012878) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 587824623) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 606985119) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 617796558) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 636956289) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 647768187) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 666928224) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 677739663) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 696899700) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 707711445) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 726871635) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 737683380) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 756843264) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 767655162) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 786815352) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 797626791) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 816786828) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 827598573) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 846758763) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 857569896) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 876730239) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 887541678) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 906701868) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 917513766) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 936673650) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 947485089) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 966645279) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 26, nsec: 977457330) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 2117214) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 12714759) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 31767696) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 42472647) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 61525584) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 72230229) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 91282860) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 101987658) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 121147695) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 131959440) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 151119324) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 161931069) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 181091259) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 191902545) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 211062735) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 221874480) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 241034670) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 251846262) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 271006299) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 281817738) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 300977928) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 311789520) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 330949863) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 341761302) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 360921492) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 371733390) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 390892968) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 401705172) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 420864903) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 431676495) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 450836685) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 461648124) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 480808467) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 491619906) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 510780096) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 521592147) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 540751878) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 551563623) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 570723507) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 581535252) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 600695136) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 611605107) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 630765144) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 641675115) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 660835152) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 671745276) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 690905313) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 701815284) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 720975321) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 731886057) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 751045941) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 761955912) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 781115949) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 792026226) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 811186110) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 822096693) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 841256577) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 852166854) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 871327197) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 882237780) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 901397817) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 915448419) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 934609221) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 948659517) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 967819554) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 27, nsec: 981870003) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 6530193) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 20366595) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 39419685) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 53363187) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 72416124) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 86359626) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 105412257) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 119462247) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 138622437) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 152673345) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 171833076) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 185883066) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 205043103) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 219094164) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 238253895) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 262872972) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 282032703) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 306650709) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 325810440) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 350428905) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 369589248) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 394207101) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 413367444) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 437985144) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 457145181) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 481763340) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 500923224) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 525541842) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 544701573) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 569319579) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 588479310) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 613098081) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 632258118) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 656875359) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 676035702) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 715689477) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 734849361) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 774503748) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 793663785) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 833318019) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 852478056) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 892131525) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 911291868) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 950945643) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 28, nsec: 970105680) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 15259302) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 34312086) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 73859067) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 92912310) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 132458373) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 151618563) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 191271573) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 210431610) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 250084926) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 269245116) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 316760337) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 335920374) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 383436666) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 402597009) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 450111771) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 469271961) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 516787947) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 535948290) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 583464429) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 602624619) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 650140911) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 669300795) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 716817240) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 735977430) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 783492957) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 802653147) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 850170510) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 869330700) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 916846533) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 936007029) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 29, nsec: 985473918) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 10133649) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 59492673) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 78545763) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 127905705) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 147065436) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 196530948) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 215691138) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 265157874) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 284317605) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 333784341) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 352943919) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 402411573) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 421571457) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 471037428) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 490197618) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 539663742) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 558823626) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 608290209) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 627450552) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 717506199) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 736666236) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 826719588) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 845879472) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 935934660) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 30, nsec: 955094850) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 50648661) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 69701751) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 159649992) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 178810029) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 268864758) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 288024795) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 378079830) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 397239714) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 487296279) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 506456316) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 596510739) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 615670470) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 705725352) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 724885695) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 823822533) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 842982111) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 941916960) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 31, nsec: 961076844) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 65511540) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 84564324) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 183394521) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 202554864) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 301492008) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 320652045) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 419586282) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 438746166) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 537680556) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 556840746) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 655777278) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 674937621) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 773875071) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 793034496) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 891971793) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 32, nsec: 911131524) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 15567444) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 34620534) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 133451190) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 152611380) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 251547606) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 270707643) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 369642798) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 388802835) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 487739061) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 506898639) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 605834712) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 624994443) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 723931893) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 743091777) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 842026779) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 861187122) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 960123960) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 33, nsec: 979283844) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 83720223) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 102773160) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 203103369) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 222263406) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 322591626) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 341751816) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 442082331) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 461242521) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 561573189) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 580733073) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 681062211) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 700222401) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 800551080) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 819711117) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 920039490) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 34, nsec: 939199221) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 45029583) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 64082367) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 164304252) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 183464442) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 283795875) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 302955453) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 403727679) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 422888022) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 523660401) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 542820132) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 643593123) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 662752701) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 763525080) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 782685117) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 883456119) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 35, nsec: 902616156) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 8888076) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 27833913) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 128496438) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 147656322) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 248428089) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 267587820) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 368360658) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 387520848) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 488290932) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 507451122) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 609547869) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 628708059) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 730807254) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 749967597) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 852065109) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 871225299) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 973322505) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 36, nsec: 992482389) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 100078830) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 119239173) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 221336532) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 240496569) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 342594693) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 361754424) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 463850865) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 483010749) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 585107190) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469432
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 604267227) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469416
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 706362750) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 725522634) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 736334379) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 755494416) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 766306008) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 785466045) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 796277790) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 815437674) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 826249266) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 845409456) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 856221354) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 875380932) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 886498371) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 905658408) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 926479872) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 37, nsec: 945640062) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 18141822) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 37195065) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 133582158) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 152742195) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 163554246) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 182713977) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 193525722) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 212685453) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 223497657) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 242657541) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 253469286) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 272629170) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 283440762) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 302600799) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 314440704) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 333600741) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 360478251) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 379638441) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 458739288) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 477899325) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 584023644) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 603183528) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 711881613) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 731041497) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 837167805) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 856327230) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 965023632) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 38, nsec: 984183975) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 95809212) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 114862149) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 223560540) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 242720730) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 348845814) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 368005698) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 476702253) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 495861831) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 601985079) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 621145422) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 729842436) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 749002320) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 855127251) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 874287594) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 39, nsec: 982986597) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 7647093) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 113559048) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 132719085) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 241419159) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 260579196) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 366704586) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 385864623) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 494561178) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 513721062) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 619847982) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 639007713) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 747705798) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 766865835) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 872991378) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 40, nsec: 892151415) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 41, nsec: 6350112) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(165) arg0 = 0, arg1 = 1096416
+syscall-(113) arg0 = 0, arg1 = 2147469192
+sys_get_time(clk_id: 0, tp: (sec: 41, nsec: 25296408) = 0
+syscall-(113) arg0 = 0, arg1 = 2147469176
+sys_get_time(clk_id: 0, tp: (sec: 41, nsec: 131315616) = 0
+syscall-(165) arg0 = 0, arg1 = 1096600
+syscall-(59) arg0 = 2147469976, arg1 = 0
+sys_pipe() = [4, 5]
+syscall-(59) arg0 = 2147469968, arg1 = 0
+sys_pipe() = [6, 7]
+syscall-(59) arg0 = 2147469960, arg1 = 0
+sys_pipe() = [8, 9]
+syscall-(59) arg0 = 2147469952, arg1 = 0
+sys_pipe() = [10, 11]
+syscall-(134) arg0 = 15, arg1 = 2147469208
+sys_sigaction(signum: SIGTERM, act: ( sa_handler:0x5A072, sa_mask:[SIGTERM], sa_flags:SA_RESTART), oldact: ( sa_handler:0x0, sa_mask:[], sa_flags:(empty))) = 0
+syscall-(134) arg0 = 17, arg1 = 2147469208
+sys_sigaction(signum: SIGCHLD, act: ( sa_handler:0x5A09C, sa_mask:[SIGCHLD], sa_flags:SA_RESTART), oldact: ( sa_handler:0x0, sa_mask:[], sa_flags:(empty))) = 0
+syscall-(220) arg0 = 18874385, arg1 = 0
+sys_fork(flags: SIGCHLD | CLONE_CHILD_CLEARTID | CLONE_CHILD_SETTID, stack_ptr: 0x0, ptid: 0, ctid: 0, newtls: 1114320) = 3
+cow_alloc  F9, 802CF, 803CC
+syscall-(57) arg0 = 4, arg1 = 0
+sys_close(fd: 4) = 0
+syscall-(57) arg0 = 7, arg1 = 0
+sys_close(fd: 7) = 0
+syscall-(57) arg0 = 5, arg1 = 0
+sys_close(fd: 5) = 0
+syscall-(57) arg0 = 6, arg1 = 0
+sys_close(fd: 6) = 0
+syscall-(57) arg0 = 9, arg1 = 0
+sys_close(fd: 9) = 0
+syscall-(57) arg0 = 11, arg1 = 0
+sys_close(fd: 11) = 0
+syscall-(57) arg0 = 8, arg1 = 0
+sys_close(fd: 8) = 0
+syscall-(57) arg0 = 10, arg1 = 0
+sys_close(fd: 10) = 0
+cow_alloc  10B, 802CE, 803DE
+cow_alloc  F8, 802CD, 803CB
+syscall-(134) arg0 = 17, arg1 = 2147469160
+sys_sigaction(signum: SIGCHLD, act: ( sa_handler:0x5A0B8, sa_mask:[SIGCHLD], sa_flags:SA_RESTART), oldact: ( sa_handler:0x5A09C, sa_mask:[SIGCHLD], sa_flags:SA_RESTART)) = 0
+[kernel] Panicked at src/mm/page_table.rs:227 vpn VPN:0x111 is mapped before mapping
+[rustsbi] reset triggered! todo: shutdown all harts on k210; program halt. Type: 0, reason: 0
+make[1]: 离开目录“/home/ghc/桌面/os_comp/rv64_os/ultraos/codes/os”

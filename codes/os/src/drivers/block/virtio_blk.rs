@@ -9,7 +9,8 @@ use crate::mm::{
     FrameTracker,
     StepByOne,
     PageTable,
-    kernel_token,
+    //kernel_token,
+    KERNEL_TOKEN,
 };
 use super::BlockDevice;
 use spin::Mutex;
@@ -35,12 +36,28 @@ impl BlockDevice for VirtIOBlock {
     }
 }
 
+
+use crate::timer::get_time;
 impl VirtIOBlock {
     #[allow(unused)]
     pub fn new() -> Self {
-        Self(Mutex::new(VirtIOBlk::new(
+        let vb = Self(Mutex::new(VirtIOBlk::new(
             unsafe { &mut *(VIRTIO0 as *mut VirtIOHeader) }
-        ).unwrap()))
+        ).unwrap()));
+        //vb.wtest();
+        vb
+    }
+
+    pub fn wtest(&self){
+        let mut buf = [0u8;512];
+        self.read_block(0, &mut buf);
+        let start = get_time();
+        for i in 1..1000 {
+            //println!("wtest");
+            self.write_block(0, &buf);
+        }
+        let end = get_time();
+        println!("[vblk writing test]: {}", end - start);
     }
 }
 
@@ -73,5 +90,5 @@ pub extern "C" fn virtio_phys_to_virt(paddr: PhysAddr) -> VirtAddr {
 
 #[no_mangle]
 pub extern "C" fn virtio_virt_to_phys(vaddr: VirtAddr) -> PhysAddr {
-    PageTable::from_token(kernel_token()).translate_va(vaddr).unwrap()
+    PageTable::from_token(KERNEL_TOKEN.token()).translate_va(vaddr).unwrap()
 }
