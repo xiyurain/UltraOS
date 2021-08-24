@@ -12,6 +12,7 @@ The documents have no English version and the developers have no plan to do so. 
 > ./codes/fat32-fuse/fat32.img
 
 被暂时移除，因此如果要拉取一份完整可运行的代码，请移步到 https://gitee.com/LoanCold/ultraos_backup 拉取完整的代码，并且在那个gitee仓库里保存有我们开发的全过程commits和21个不同的分支，感谢支持！
+
 ------------------------------------------------------------------------
 
 根目录下Makefile提供了两个命令。
