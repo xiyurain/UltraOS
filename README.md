@@ -4,7 +4,6 @@
 
 UltraOS: A developer friendly project that has detailed documents of **RISC-V multicore operating system** that is written by Rust language in qemu and k210 platform.
 
-The documents have no English version and the developers have no plan to do so. But we have English comments in codes which might help, or you can use translation tools to get more detail about this project.
 
 #### 运行
 ------------------------------------------------------------------------
