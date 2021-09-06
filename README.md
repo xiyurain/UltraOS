@@ -13,6 +13,7 @@ UltraOS: A **RISC-V multicore operating system** that is written by Rust languag
 被暂时移除，因此如果要拉取一份完整可运行的代码，请移步到 https://gitee.com/LoanCold/ultraos_backup 拉取完整的代码，并且在那个gitee仓库里保存有我们开发的全过程commits和21个不同的分支，感谢支持！
 
 Due to the file size restriction, the virtual file system image was removed, and the complete code repository is at https://gitee.com/LoanCold/ultraos_backup . 
+
 ------------------------------------------------------------------------
 
 根目录下Makefile提供了两个命令。
@@ -23,11 +24,13 @@ Makefile provides two make command under the root directory.
 
 该命令将生成完整的二进制内核文件，可烧录至k210开发板上。该命令会编译内核文件，与SBI拼接后生成裸运行文件k210.bin放置在根目录。
 
-This would build the kernel binary file.
+This would build the kernel binary file, which can run on the Kendryte K210 embedded SoC.
 
 > make run
 
 该命令将直接在qemu上运行UltraOS。该命令会首先编译我们准备好的测试代码，之后将其程序以及我们所参加的操作系统大赛给出的官方测试文件一同烧录到我们准备的文件镜像中，然后开始编译内核文件，与SBI拼接后生成裸运行文件，通过qemu运行。注意，我们虽然与RustSBI进行合并，但是最后我们并没有使用它，而是换成了OpenSBI，因为RustSBI在qemu下没有开启浮点运算，在k210平台则继续使用了RustSBI（UltraOS定制版本）。
+
+This would run the OS kernel directly on Qemu.
 
 > make run BOARD=k210
 
