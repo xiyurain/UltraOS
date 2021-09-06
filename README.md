@@ -12,13 +12,18 @@ UltraOS: A **RISC-V multicore operating system** that is written by Rust languag
 
 被暂时移除，因此如果要拉取一份完整可运行的代码，请移步到 https://gitee.com/LoanCold/ultraos_backup 拉取完整的代码，并且在那个gitee仓库里保存有我们开发的全过程commits和21个不同的分支，感谢支持！
 
+Due to the file size restriction, the virtual file system image was removed, and the complete code repository is at https://gitee.com/LoanCold/ultraos_backup . 
 ------------------------------------------------------------------------
 
 根目录下Makefile提供了两个命令。
 
+Makefile provides two make command under the root directory.
+
 > make all
 
 该命令将生成完整的二进制内核文件，可烧录至k210开发板上。该命令会编译内核文件，与SBI拼接后生成裸运行文件k210.bin放置在根目录。
+
+This would build the kernel binary file.
 
 > make run
 
