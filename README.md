@@ -3,6 +3,7 @@
 拥有友好代码和详细文档的Rust编写的基于RISC-V64的多核操作系统UltraOS，支持qemu和k210平台运行。
 
 UltraOS: A **RISC-V multicore operating system** that is written by Rust language in qemu and k210 platform.
+Currently I'm working on the English Version of the documents.
 
 
 #### 运行
@@ -36,15 +37,20 @@ This would run the OS kernel directly on Qemu.
 
 该命令将生成内核文件，并且直接在k210上运行UltraOS。但是，为了能够运行更多的程序，请在k210上插入sd卡，并在里面放置预备文件和程序，UltraOS会将其作为文件系统控制的外存进行使用。同时，需要注意的是，为了支持比赛的进行，我们的UltraOS会自行运行
 
+This command will build the kernel binary file and run it directly on the Kendryte K210 embedded SoC.
+
 > make gdb
 
 > make monitor
 
 这一组命令分别在两个窗口运行，即可启动gdb调试。
 
+Run this two command seperately in two shell, then the GDB debugging can be start.
+
 #### 联系我们 Contact Us
 
 [loancold@qq.com](mailto:loancold@qq.com)
+[lewaysfca73@gmail.com](mailto:lewaysfca73@gmail.com)
 
 #### 项目人员
 
