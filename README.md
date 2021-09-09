@@ -3,7 +3,8 @@
 拥有友好代码和详细文档的Rust编写的基于RISC-V64的多核操作系统UltraOS，支持qemu和k210平台运行。
 
 UltraOS: A **RISC-V multicore operating system** that is written by Rust language in qemu and k210 platform.
-Currently I'm working on the English Version of the documents.
+
+**Currently I'm working on the English Version of the documents.**
 
 
 #### 运行
