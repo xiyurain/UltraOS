@@ -1,7 +1,7 @@
 # Building
 TARGET := riscv64imac-unknown-none-elf
 MODE := release
-KERNEL_ELF := target/$(TARGET)/$(MODE)/os
+KERNEL_ELF := target/$(TARGET)/$(MODE)/UltraOS
 KERNEL_BIN := $(KERNEL_ELF).bin
 DISASM_TMP := target/$(TARGET)/$(MODE)/asm
 FS_IMG := ../user/target/$(TARGET)/$(MODE)/fs.img
@@ -23,6 +23,8 @@ BOARD ?= qemu
 SBI ?= rustsbi
 ifeq ($(BOARD), qemu)
 	BOOTLOADER := default
+#	BOOTLOADER := ../bootloader/$(SBI)-$(BOARD).bin # If you have no OpenSBI, try RustSBI.
+#	BOOTLOADER := ../bootloader/$(SBI)-$(BOARD)-new.bin # If you want to use new RustSBI, try this.
 else ifeq ($(BOARD), k210)
 	BOOTLOADER := ../bootloader/$(SBI)-$(BOARD).bin
 endif
@@ -50,8 +52,9 @@ DISASM ?= -x
 build: env $(KERNEL_BIN)
 
 env:
+	rustup override set nightly-2021-05-10
 	(rustup target list | grep "riscv64imac-unknown-none-elf (installed)") || rustup target add $(TARGET)
-	cargo install cargo-binutils
+	cargo install cargo-binutils --version 0.2.0
 	rustup component add rust-src
 	rustup component add llvm-tools-preview
 

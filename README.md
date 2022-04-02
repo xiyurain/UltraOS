@@ -4,19 +4,46 @@
 
 UltraOS: A **RISC-V multicore operating system** that is written by Rust language in qemu and k210 platform.
 
-**Currently I'm working on the English Version of the documents.**
-
-
-#### 运行
-------------------------------------------------------------------------
-由于Github的文件大小限制原因，项目中原来的文件系统镜像 
-> ./codes/fat32-fuse/fat32.img
-
-被暂时移除，因此如果要拉取一份完整可运行的代码，请移步到 https://gitee.com/LoanCold/ultraos_backup 拉取完整的代码，并且在那个gitee仓库里保存有我们开发的全过程commits和21个不同的分支，感谢支持！
-
-Due to the file size restriction, the virtual file system image was removed, and the complete code repository is at https://gitee.com/LoanCold/ultraos_backup . 
+当前，由于兼容问题，我们更新了项目的版本管理，将工具链以及重要的外部库进行了**锁定**。需要注意的是，最后的展示结果将会出现**部分错误**，这是正常的，因为项目人员技术水平问题，顾此失彼，支持了更高级的功能，但并未进行回归测试保证全方面功能正确。但是已知问题都是容易解决的，不会对架构及其实现产生影响。
 
 ------------------------------------------------------------------------
+移步到 https://gitee.com/LoanCold/ultraos_backup 拉取完整的代码，并且在那个gitee仓库里保存有我们开发的全过程commits和21个不同的分支，感谢支持！但是，gitee上并不会与本Github项目进行代码同步，本项目为最终维护项目。
+
+Complete code repository is at https://gitee.com/LoanCold/ultraos_backup. However, the source code there is not sync. The Github repository here is the official version that will possibly be updated later. 
+
+------------------------------------------------------------------------
+### 联系我们 Contact Us
+
+李程浩：[loancold@qq.com](mailto:loancold@qq.com)
+
+宫浩辰：[1527198893@qq.com](mailto:1527198893@qq.com)
+
+任翔宇：[lewaysfca73@gmail.com](mailto:lewaysfca73@gmail.com)
+
+
+### 快速上手 Quick Start
+
+确保您已经安装`qemu-system-riscv64`以及`Rust`组件。在根目录下，输入以下命令。
+
+``` shell
+make run
+# Later you will enter UltraOS shell, then type:
+root@UltraOS: / >>run_testsuites
+```
+
+然后你将会看到UltraOS自动运行21年首届中国本科生OS竞赛内核赛道初试的测试样例。
+
+如果你的电脑没有安装`OpenSBI`，或许会出现`opensbi-riscv64-virt-fw_jump.bin`文件无法找到的问题。此时你可以修改`codes/os/Makefile line 25-27` 挑选其他SBI使用。
+``` Makefile
+	BOOTLOADER := default
+#	BOOTLOADER := ../bootloader/$(SBI)-$(BOARD).bin # If you have no OpenSBI, try RustSBI.
+#	BOOTLOADER := ../bootloader/$(SBI)-$(BOARD)-new.bin # If you want to use new RustSBI, try this.
+```
+
+如果你想修改Shell，见`codes/user/src/bin/user_shell.rs`。如果你想修改内核，见`codes/os/src/main.rs`。
+
+### 运行
+
 
 根目录下Makefile提供了两个命令。
 
@@ -48,12 +75,8 @@ This command will build the kernel binary file and run it directly on the Kendry
 
 Run this two command seperately in two shell, then the GDB debugging can be start.
 
-#### 联系我们 Contact Us
 
-[loancold@qq.com](mailto:loancold@qq.com)
-[lewaysfca73@gmail.com](mailto:lewaysfca73@gmail.com)
-
-#### 项目人员
+### 项目人员
 
 来自哈尔滨工业大学（深圳）
 
@@ -63,7 +86,7 @@ Run this two command seperately in two shell, then the GDB debugging can be star
 
 任翔宇：主要负责内存管理以及优化，trap设计。
 
-#### 项目特征
+### 项目特征
 
 - Rust语言
 - 多核操作系统
@@ -75,7 +98,7 @@ Run this two command seperately in two shell, then the GDB debugging can be star
 - 混合调试工具：Monitor（结合静态宏打印以及动态gdb特性）
 - 详细项目文档、开发过程支持以及理解友好型代码构造和注释
 
-#### 文件包阅读说明
+### 文件包阅读说明
 
 
 - doc：项目文档
@@ -88,7 +111,7 @@ Run this two command seperately in two shell, then the GDB debugging can be star
   - simple_fat32：fat32文件系统，隶属于kernel
   - user：用户程序相关
 
-#### 感谢与声明
+### 感谢与声明
 
 本项目使用了洛佳等开发者的[RustSBI](https://github.com/rustsbi/rustsbi) 2021.03.26版本，以及吴一凡等开发者的[rCoreTutorial-v3](https://github.com/rcore-os/rCore-Tutorial-v3) 2021.03.26版本。
 
