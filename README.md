@@ -4,7 +4,7 @@
 
 UltraOS: A **RISC-V multicore operating system** that is written by Rust language in qemu and k210 platform.
 
-**Currently I'm working on the English Version of the documents.**
+**WARNING**：由于我们使用了不稳定的特性，当前他们已经被废除，同时因为依赖库的版本升级，也变得不兼容。我们尝试进行修复，虽然能够运行起来，但是运行表现已经与当初有很大差异，很抱歉项目没能做好版本管理，请大家以文档和代码为准。
 
 
 #### 运行
