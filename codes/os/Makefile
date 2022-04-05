@@ -52,7 +52,6 @@ DISASM ?= -x
 build: $(KERNEL_BIN)
 
 env:
-	rustup update && cargo install cargo-binutils
 	rustup override set nightly-2021-05-10
 	(rustup target list | grep "riscv64imac-unknown-none-elf (installed)") || rustup target add $(TARGET)
 	rustup component add rust-src
