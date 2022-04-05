@@ -26,7 +26,9 @@ Complete code repository is at https://gitee.com/LoanCold/ultraos_backup. Howeve
 确保您已经安装`qemu-system-riscv64`以及`Rust`组件。在根目录下，输入以下命令。
 
 ``` shell
-make run
+
+make env # Install required environment. If it succeeds, you don't need to do it again.
+make run # Prepare neccessaray components and compilation, then run UltraOS in qemu.
 # Later you will enter UltraOS shell, then type:
 root@UltraOS: / >>run_testsuites
 ```

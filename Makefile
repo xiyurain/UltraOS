@@ -3,6 +3,10 @@ all:
 	cd codes/user && make elf
 	cd codes/os && make release BOARD=k210
 
+env:
+	cd codes/fat32-fuse && sh qemu_fs.sh
+	cd codes/os && make env
+
 run:
 	cd codes/user && make elf
 	cd codes/os && make fat32

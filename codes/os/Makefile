@@ -49,12 +49,12 @@ OBJCOPY := rust-objcopy --binary-architecture=riscv64
 DISASM ?= -x
 
 # build: env $(KERNEL_BIN) $(FS_IMG) fat32
-build: env $(KERNEL_BIN)
+build: $(KERNEL_BIN)
 
 env:
+	rustup update && cargo install cargo-binutils
 	rustup override set nightly-2021-05-10
 	(rustup target list | grep "riscv64imac-unknown-none-elf (installed)") || rustup target add $(TARGET)
-	cargo install cargo-binutils --version 0.2.0
 	rustup component add rust-src
 	rustup component add llvm-tools-preview
 
