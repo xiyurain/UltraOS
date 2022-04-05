@@ -35,7 +35,7 @@ root@UltraOS: / >>run_testsuites
 
 然后你将会看到UltraOS自动运行21年首届中国本科生OS竞赛内核赛道初试的测试样例。
 
-如果你的电脑没有安装`OpenSBI`，或许会出现`opensbi-riscv64-virt-fw_jump.bin`文件无法找到的问题。此时你可以修改`codes/os/Makefile line 25-27` 挑选其他SBI使用。
+如果你的电脑没有安装`OpenSBI`，或许会出现`opensbi-riscv64-virt-fw_jump.bin`文件无法找到的问题。此时你可以修改`codes/os/Makefile line 25-27` 挑选其他SBI使用。但是功能将不会正常，因为老版本RustSBI无法启用浮点，无法通过许多测试，新版本则存在兼容问题。但是k210上不存在这种情况，可放心使用。
 ``` Makefile
 	BOOTLOADER := default
 #	BOOTLOADER := ../bootloader/$(SBI)-$(BOARD).bin # If you have no OpenSBI, try RustSBI.
