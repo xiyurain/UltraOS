@@ -27,5 +27,6 @@ UltraOS文档将从一个宏观的角度，尽可能抛开代码的具体实现�
 - Shell.md：UltraOS用户程序Shell支持。
 - Signal.md：UltraOS信号机制。
 - **UltraOS文档.pdf（重要）**：UltraOS的设计需求、理念、架构、特点、展望等全方位详细文档。
+- **UltraOS.pptx（重要）**：UltraOS最终答辩的PPT，简洁地展现了我们的努力和突出成果。
 - UltraOS性能测试表.xlsx：UltraOS开发过程中的性能测试。
 - UserSupportThinking.md：UltraOS对于用户态支持所作的努力和思考。
