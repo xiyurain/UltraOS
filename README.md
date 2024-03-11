@@ -120,3 +120,17 @@ Run this two command seperately in two shell, then the GDB debugging can be star
 同时感谢哈尔滨工业大学（深圳）的黎庚祉同学给予的帮助和灵感，以及夏文老师和江仲鸣老师在进度上的跟踪。
 
 本项目使用GPL3.0协议，欢迎开发者使用该项目进行学习。
+
+
+### Lines of Code
+
+Codes from us or from prototypes UltraOS based on.
+
+| path | files | code | comment | blank | total |
+| user/src | 30 | 1,811 | 129 | 241 | 2,181 |
+| fat32-fuse | 7 | 573 | 44 | 72 | 689 |
+| simple_fat32 | 10 | 2,241 | 407 | 241 | 2,889 |
+| os | 59 | 8,099 | 1,466 | 979 | 10,544 |
+
+Pure Code: 12724
+Total: 16303
