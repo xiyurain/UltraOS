@@ -126,11 +126,13 @@ Run this two command seperately in two shell, then the GDB debugging can be star
 
 Codes from us or from prototypes UltraOS based on.
 
+```
 | path | files | code | comment | blank | total |
 | user/src | 30 | 1,811 | 129 | 241 | 2,181 |
 | fat32-fuse | 7 | 573 | 44 | 72 | 689 |
 | simple_fat32 | 10 | 2,241 | 407 | 241 | 2,889 |
 | os | 59 | 8,099 | 1,466 | 979 | 10,544 |
+```
 
 Pure Code: 12724
 Total: 16303
