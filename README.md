@@ -9,7 +9,7 @@ UltraOS: A **RISC-V multicore operating system** that is written by Rust languag
 ------------------------------------------------------------------------
 移步到 https://gitee.com/LoanCold/ultraos_backup 拉取完整的代码，并且在那个gitee仓库里保存有我们开发的全过程commits和21个不同的分支，感谢支持！但是，gitee上并不会与本Github项目进行代码同步，本项目为最终维护项目。
 
-Complete code repository is at https://gitee.com/LoanCold/ultraos_backup. However, the source code there is not sync. The Github repository here is the official version that will possibly be updated later. 
+Complete code repository is at https://gitee.com/LoanCold/ultraos_backup. However, the source code there is not synced. The Github repository here is the official version now. 
 
 ------------------------------------------------------------------------
 ### 联系我们 Contact Us
@@ -23,7 +23,7 @@ Complete code repository is at https://gitee.com/LoanCold/ultraos_backup. Howeve
 
 ### 快速上手 Quick Start
 
-确保您已经安装`qemu-system-riscv64`以及`Rust`组件。在根目录下，输入以下命令。
+确保您已经安装`qemu-system-riscv64` (may done through `sudo apt install qemu-system-riscv64`) 以及`Rust`组件。在根目录下，输入以下命令。
 
 ``` shell
 
@@ -35,7 +35,7 @@ root@UltraOS: / >>run_testsuites
 
 然后你将会看到UltraOS自动运行21年首届中国本科生OS竞赛内核赛道初试的测试样例。
 
-如果你的电脑没有安装`OpenSBI`，或许会出现`opensbi-riscv64-virt-fw_jump.bin`文件无法找到的问题。此时你可以修改`codes/os/Makefile line 25-27` 挑选其他SBI使用。但是功能将不会正常，因为老版本RustSBI无法启用浮点，无法通过许多测试，新版本则存在兼容问题。但是k210上不存在这种情况，可放心使用。
+如果你的电脑没有安装`OpenSBI`，或许会出现`opensbi-riscv64-virt-fw_jump.bin`文件无法找到的问题。或者当你遇到其他的问题使得没有正常进入UltraOS命令行界面，此时你可以修改`codes/os/Makefile line 25-27` 挑选其他SBI使用。但是功能将不会正常，因为老版本RustSBI无法启用浮点，无法通过许多测试，新版本则存在兼容问题。但是k210上不存在这种情况，可放心使用。
 ``` Makefile
 	BOOTLOADER := default
 #	BOOTLOADER := ../bootloader/$(SBI)-$(BOARD).bin # If you have no OpenSBI, try RustSBI.
@@ -49,7 +49,7 @@ root@UltraOS: / >>run_testsuites
 
 根目录下Makefile提供了两个命令。
 
-Makefile provides two make command under the root directory.
+Makefile provides two make commands under the root directory.
 
 > make all
 
@@ -75,7 +75,7 @@ This command will build the kernel binary file and run it directly on the Kendry
 
 这一组命令分别在两个窗口运行，即可启动gdb调试。
 
-Run this two command seperately in two shell, then the GDB debugging can be start.
+Run these two commands separately in two shells; then the GDB debugging can start.
 
 
 ### 项目人员
